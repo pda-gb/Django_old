@@ -14,11 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path  # динамические ссылки на страницы
 import mainapp.views as mainapp
 urlpatterns = [
-    path('', mainapp.main),
-    path('products/', mainapp.products),
-    path('contact/', mainapp.contact),
-    path('admin/', admin.site.urls),
+    path('', mainapp.main, name='main'),
+    path('products/', mainapp.products, name='products'),
+    path('contact/', mainapp.contact, name='contact'),
+    path('admin/', admin.site.urls, name='admin'),
+    path('products_all/', mainapp.products, name='products_all'),
+    path('products_home/', mainapp.products, name='products_home'),
+    path('products_office/', mainapp.products, name='products_office'),
+    path('products_modern/', mainapp.products, name='products_modern'),
+    path('products_classic/', mainapp.products, name='products_classic'),
 ]
