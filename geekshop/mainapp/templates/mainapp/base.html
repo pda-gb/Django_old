@@ -8,8 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 <title>
+    {# |capfirst - фильтр, меняющий первую букву на заглавную #}
     {% block title %}
-        {{ title }}
+        {{ title|capfirst }}
     {% endblock title %}
 </title>
 
