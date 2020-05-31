@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path  # динамические ссылки на страницы
 import mainapp.views as mainapp
+from django.conf import settings  # для работы с медиа
+from django.conf.urls.static import static  # для работы с медиа
+
 urlpatterns = [
     path('', mainapp.main, name='main'),
     path('products/', mainapp.products, name='products'),
@@ -27,3 +30,8 @@ urlpatterns = [
     path('products_modern/', mainapp.products, name='products_modern'),
     path('products_classic/', mainapp.products, name='products_classic'),
 ]
+#  Смысл этого кода — сообщить Django, что нужно папку на диске MEDIA_ROOT
+#  сделать доступной по сетевому адресу MEDIA_URL. Только для режима дебага,
+#  в готовом проекте будет раздавть веб-сервер
+if settings.DEBUG:
+    urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
