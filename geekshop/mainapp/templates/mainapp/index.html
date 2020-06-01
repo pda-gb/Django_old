@@ -35,6 +35,7 @@
 					<a href="#"><img src="{{ media_url }}{{ product.image }}" alt="{{ product.short_desc }}">
 						<div class="text">
 							<img src="{% static 'img/icon-hover.png' %}" alt="img">
+							<h3>{{ product.category.name }}</h3>
 							<h4>{{ product.name }}</h4>
 							<p>{{ product.desc }}</p>
 						</div> 
