@@ -18,17 +18,12 @@ from django.urls import path  # динамические ссылки на ст�
 import mainapp.views as mainapp
 from django.conf import settings  # для работы с медиа
 from django.conf.urls.static import static  # для работы с медиа
-
+from django.conf.urls import include  # для работы с include
 urlpatterns = [
     path('', mainapp.main, name='main'),
-    path('products/', mainapp.products, name='products'),
     path('contact/', mainapp.contact, name='contact'),
     path('admin/', admin.site.urls, name='admin'),
-    path('products_all/', mainapp.products, name='products_all'),
-    path('products_home/', mainapp.products, name='products_home'),
-    path('products_office/', mainapp.products, name='products_office'),
-    path('products_modern/', mainapp.products, name='products_modern'),
-    path('products_classic/', mainapp.products, name='products_classic'),
+    path('products/', include('mainapp.urls', namespace='products'))
 ]
 #  Смысл этого кода — сообщить Django, что нужно папку на диске MEDIA_ROOT
 #  сделать доступной по сетевому адресу MEDIA_URL. Только для режима дебага,

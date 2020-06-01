@@ -12,16 +12,18 @@ def main(request):
     return render(request, 'mainapp/index.html', page_content)
 
 
-def products(request):
+def products(request, pk=None):
     current_title = "продукты"
-    links_menu = [
-        {'href': 'products_all', 'name': 'все'},
-        {'href': 'products_home', 'name': 'дом'},
-        {'href': 'products_office', 'name': 'офис'},
-        {'href': 'products_modern', 'name': 'модерн'},
-        {'href': 'products_classic', 'name': 'классика'},
-    ]
-    page_content = {"title": current_title, "links_menu": links_menu}
+    links_menu = ProductCategory.objects.all()
+    same_product = Product.objects.all()
+    page_content = {
+                    "title": current_title,
+                    "links_menu": links_menu,
+                    "same_product": same_product,
+                    "media_url": settings.MEDIA_URL
+                    }
+    if pk:
+        print(f"User select category: {pk}")
     return render(request, 'mainapp/products.html', page_content)
 
 
