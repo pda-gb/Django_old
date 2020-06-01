@@ -1,24 +1,10 @@
 from django.shortcuts import render
 
+
 def main(request):
     current_title = "главная"
-    products = [
-        {
-            "name": "отличный стул",
-            "desc": "вам понравится",
-            "image_src": "product-1.jpg",
-            "image_href": "/product/1/",
-            "alt": "продукт 1"
-        },
-        {
-            "name": "стул !!!!!",
-            "desc": "что надо!!",
-            "image_src": "product-2.jpg",
-            "image_href": "/product/2/",
-            "alt": "продукт 2"
-        }
-    ]
-    page_content = {"title": current_title, "products": products}
+    products = Product.objects.all()
+    page_content = {"title": current_title, "products": products, "media_url": settings.MEDIA_URL}
     return render(request, 'mainapp/index.html', page_content)
 
 
