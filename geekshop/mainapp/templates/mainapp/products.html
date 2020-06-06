@@ -1,8 +1,8 @@
-{%  extends 'mainapp/base.html'%}
+{%  extends 'mainapp/base.html' %}
 {% load staticfiles %}
 
 {% block content %}
-<div class="container">
+
     <div class="hero-white">
         <div class="header clearfix">
             <a href="/" class="logo"></a>
@@ -65,16 +65,16 @@
                 <a class="explore" href="#">показать все <img src="{% static 'img/arrow.png' %}" alt=""></a>
             </div>
             <div class="related-products clearfix">
-                {% for product in same_products %}
+                {% for jtm_product in same_products %}
                 <div class="block">
-                    <a href="#"><img src="{{ media_url }}{{ product.image }}" alt="{{ product.short_desc }}">
+                    <a href="#"><img src="{{ media_url }}{{ jtm_product.image }}" alt="{{ jtm_product.short_desc }}">
                         <div class="text">
                             <img src="/static/img/icon-hover.png" alt="img">
-                            <h3>Категория:{{ product.category.name }}</h3>
-                            <h4>Название: {{ product.name }}</h4>
-                            <p>Описание: {{ product.description }} </p>
-                            <p>Цена: {{ product.price }} </p>
-                            <p>На складе: {{ product.quantity }} </p>
+                            <h3>Категория:{{ itm_product.category.name }}</h3>
+                            <h4>Название: {{ itm_product.name }}</h4>
+                            <p>Описание: {{ itm_product.description }} </p>
+                            <p>Цена: {{ itm_product.price }} </p>
+                            <p>На складе: {{ itm_product.quantity }} </p>
                         </div>
                     </a>
                 </div>
@@ -85,7 +85,7 @@
 
     <div class="clr"></div>
 
-</div>
+
 
 {% endblock content %}
 

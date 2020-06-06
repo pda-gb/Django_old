@@ -1,8 +1,8 @@
-{%  extends 'mainapp/base.html'%}
+{%  extends 'mainapp/base.html' %}
 {% load staticfiles %}
 
     {% block content %}
-	<div class="container">
+
 		<div class="slider">
 			<div class="header clearfix">
 				<a href="{% url 'main' %}" class="logo"></a>
@@ -29,15 +29,15 @@
 			<div class="clearfix">
 			</div>
 			<div class="tab-content">
-{#            в цикле проходим по контенту и динамически выводим в блоки #}
-                {% for product in products %}
+<!--            в цикле проходим по контенту и динамически выводим в блоки -->
+                {% for itm_product in products %}
                 <div class="block">
-					<a href="#"><img src="{{ media_url }}{{ product.image }}" alt="{{ product.short_desc }}">
+					<a href="#"><img src="{{ media_url }}{{ itm_product.image }}" alt="{{ itm_product.short_desc }}">
 						<div class="text">
 							<img src="{% static 'img/icon-hover.png' %}" alt="img">
-							<h3>{{ product.category.name }}</h3>
-							<h4>{{ product.name }}</h4>
-							<p>{{ product.desc }}</p>
+							<h3>{{ itm_product.category.name }}</h3>
+							<h4>{{ itm_product.name }}</h4>
+							<p>{{ itm_product.desc }}</p>
 						</div> 
 					</a>
 				</div>
@@ -47,7 +47,7 @@
 		
 		<div class="clr"></div>
 
-	</div>
+
 
     {% endblock content %}
 

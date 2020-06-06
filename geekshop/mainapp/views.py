@@ -1,8 +1,8 @@
 from django.conf import settings
 from django.shortcuts import render
 from django.utils import timezone
-
-from .models import Product, ProductCategory
+# импортируем из моделей классы, для работы с данными из бд
+from .models import Product, ProductCategory, Contact
 
 
 def main(request):
@@ -29,5 +29,7 @@ def products(request, pk=None):
 
 def contact(request):
     current_title = "контакты"
-    page_content = {"title": current_title}
+    # visit_date = timezone.now() /// "visit_date": visit_date,
+    locations = Contact.objects.all()
+    page_content = {"title": current_title, "locations": locations}
     return render(request, 'mainapp/contact.html', page_content)
