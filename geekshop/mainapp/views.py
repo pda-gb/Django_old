@@ -7,7 +7,7 @@ from .models import Product, ProductCategory, Contact
 
 def main(request):
     current_title = "главная"
-    products = Product.objects.all()
+    products = Product.objects.all()[:4]
     page_content = {"title": current_title, "products": products, "media_url": settings.MEDIA_URL}
     return render(request, 'mainapp/index.html', page_content)
 
@@ -15,11 +15,11 @@ def main(request):
 def products(request, pk=None):
     current_title = "продукты"
     links_menu = ProductCategory.objects.all()
-    same_product = Product.objects.all()
+    same_products = Product.objects.all()
     page_content = {
                     "title": current_title,
                     "links_menu": links_menu,
-                    "same_product": same_product,
+                    "same_products": same_products,
                     "media_url": settings.MEDIA_URL
                     }
     if pk:
